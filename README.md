@@ -14,7 +14,7 @@ see Also the Cucumber and Rspec stuff in /features/ for usage details)
 Contributing to keen
 --------------------
  
- * Use Jeweler!
+ * If you have gem release access, use Jeweler to increase version & release:
    * rake version:bump:major
    * rake release
  * Make sure all tests pass in 1.9.2 and 1.9.3
