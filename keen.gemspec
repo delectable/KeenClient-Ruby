@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "keen"
-  s.version = "0.2.0"
+  s.version = "0.2.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["dorkitude"]
-  s.date = "2012-10-02"
+  s.date = "2012-10-27"
   s.description = "See the github repo or examples.rb for usage information."
   s.email = "kyle@keen.io"
   s.extra_rdoc_files = [
@@ -26,25 +26,17 @@ Gem::Specification.new do |s|
     "conf/cacert.pem",
     "examples.rb",
     "features/add_event.feature",
-    "features/redis_queue.feature",
     "features/step_definitions/keen_steps.rb",
     "features/support/before_and_after.rb",
     "features/support/env.rb",
     "keen.gemspec",
     "keen.gemspec.old",
     "lib/keen.rb",
-    "lib/keen/async.rb",
-    "lib/keen/async/job.rb",
-    "lib/keen/async/storage/base_storage_handler.rb",
-    "lib/keen/async/storage/flat_file_handler.rb",
-    "lib/keen/async/storage/redis_handler.rb",
-    "lib/keen/async/worker.rb",
     "lib/keen/client.rb",
     "lib/keen/event.rb",
     "lib/keen/keys.rb",
     "lib/keen/utils.rb",
-    "lib/keen/version.rb",
-    "send.rb"
+    "lib/keen/version.rb"
   ]
   s.homepage = "http://github.com/dorkitude/keen"
   s.licenses = ["MIT"]
@@ -57,7 +49,6 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<json>, [">= 1.6.5"])
-      s.add_runtime_dependency(%q<redis>, [">= 0"])
       s.add_development_dependency(%q<shoulda>, [">= 0"])
       s.add_development_dependency(%q<rdoc>, ["~> 3.12"])
       s.add_development_dependency(%q<bundler>, [">= 1.1.4"])
@@ -66,7 +57,6 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<cucumber>, [">= 1.2.1"])
     else
       s.add_dependency(%q<json>, [">= 1.6.5"])
-      s.add_dependency(%q<redis>, [">= 0"])
       s.add_dependency(%q<shoulda>, [">= 0"])
       s.add_dependency(%q<rdoc>, ["~> 3.12"])
       s.add_dependency(%q<bundler>, [">= 1.1.4"])
@@ -76,7 +66,6 @@ Gem::Specification.new do |s|
     end
   else
     s.add_dependency(%q<json>, [">= 1.6.5"])
-    s.add_dependency(%q<redis>, [">= 0"])
     s.add_dependency(%q<shoulda>, [">= 0"])
     s.add_dependency(%q<rdoc>, ["~> 3.12"])
     s.add_dependency(%q<bundler>, [">= 1.1.4"])
