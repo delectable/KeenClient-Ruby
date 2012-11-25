@@ -18,9 +18,11 @@ Then /^the response from the server should be good\.$/ do
   response.should == {"created" => true}
 end
 
+When /^I post mulitple events$/ do
+  @result = @client.add_event("cucumber_events", [{:hi_from => "cucumber 1!", :keen_version => Keen::VERSION},{:hi_from => "cucumber 2!", :keen_version => Keen::VERSION}])
+end
 
-When /^I post (\d+) events$/ do |n|
-  n.to_i.times do
-    @client.add_event("cucumber_events", {:hi_from => "cucumber!", :keen_version => Keen::VERSION})
-  end
+Then /^the response from the server should be good for each event$/ do
+  response = @result
+  response.should == {"cucumber_events" => [{"success" => true},{"success" => true}]}
 end
