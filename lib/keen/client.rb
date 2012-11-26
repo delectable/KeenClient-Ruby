@@ -56,7 +56,13 @@ module Keen
       event = Keen::Event.new(event_collection, event_properties)
 
       # build the request:
-      url = "#{base_url}/projects/#{project_id}/events/#{event_collection}"
+      if event.properties.is_a?(Array)
+        url = "#{base_url}/projects/#{project_id}/events"
+        body = {event_collection => event.properties}
+      else
+        url = "#{base_url}/projects/#{project_id}/events/#{event_collection}"
+        body = event.properties
+      end
       uri = URI.parse(url)
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = true
@@ -65,8 +71,6 @@ module Keen
       http.verify_depth = 5
 
       request = Net::HTTP::Post.new(uri.path)
-
-      body = event.properties
 
       if timestamp
         request.body[:keen] = {
